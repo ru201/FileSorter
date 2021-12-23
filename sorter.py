@@ -1,12 +1,14 @@
 import sys
 import os
 
-direc = input("Enter directory path: ")
+print("File Sorter")
+print("Creates folders named after the type of files to be sorted in the current directory which hold the sorted files from the specified directory.")
+direc = input("Enter directory path within current directory: ")
 
 if os.path.isdir(direc): 
     directory = os.fsencode(direc)
 else:
-    sys.stderr.write("Directory does not exist\n")
+    print("Directory does not exist\n")
     exit()
 
 print("Enter file types (e.g. .docx, .pdf): ")
@@ -22,6 +24,7 @@ for f_type in sys.stdin:
             if filename.endswith(f_type):
                 os.rename(os.path.join(os.path.abspath(direc), filename), os.path.join(os.path.abspath(f_type), filename))
     else:
+        input("Enter any character to end:")
         break
 
 """import sys
